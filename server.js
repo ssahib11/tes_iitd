@@ -3,6 +3,7 @@ const path = require('path');
 const logger = require('morgan');
 const passport = require('passport');
 const session = require('express-session');
+const multer = require('multer');
 // const routes = require('./routes');
 
 require('./config/passport')(passport);
