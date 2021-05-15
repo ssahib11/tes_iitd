@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('./partials/head', {title: 'TES Admin | Edit Event'}); %>
+    </head>
+    <!-- <body class="text-center"> -->
+    <body>
+        <%- include('./partials/navbar'); %>
+        <div class="container">
+            <h4 class="text-center"> Add new Event </h4>
+            <img id="preview" class="rounded mx-auto d-block" width="600" src="<%=event.image_path%>">
+            <% const submitURL = '/admin/events/update/' + event.id; %>
+            <%- include('./partials/eventForm', { submit: submitURL, event: event }); %>
+        </div>
+        <%- include('./partials/scripts'); %>
+    <script>
+        const loadImage = (event) => {
+            const image = document.getElementById('preview');
+            image.src = URL.createObjectURL(event.target.files[0]);
+        };
+    </script>
+    </body>
+</html>
