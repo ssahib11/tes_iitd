@@ -700,6 +700,11 @@ MigrationBackup/
 data/db-dev.sqlite
 data/db-test.sqlite
 
+# uploaded image files for the database
+public/images/events
+public/images/team
+public/images/blog
+
 # End of https://www.gitignore.io/api/node,linux,macos,windows,intellij,webstorm,jetbrains,visualstudio,visualstudiocode
 
 .idea/
