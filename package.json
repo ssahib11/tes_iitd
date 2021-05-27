@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon server.js",
+    "compile:sass": "node-sass public/sass/main.scss public/css/styles.css -w",
+    "dev": "npm run compile:sass && nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -14,6 +15,7 @@
     "express": "^4.17.1"
   },
   "devDependencies": {
+    "node-sass": "^6.0.0",
     "nodemon": "^2.0.7"
   }
 }
