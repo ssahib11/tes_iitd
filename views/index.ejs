@@ -1,130 +1,151 @@
 <!DOCTYPE html>
 <html>
-    <%- include('partials/head.ejs') %>
-<body>
-    <%- include('partials/navbar') %>
+<%- include('partials/head') %>
 
-    <%- include('partials/header') %>
+	<body>
+		<%- include('partials/splashscreen') %>
+		<%- include('partials/navbar') %>
 
-<!--Main layout-->
-    <main class="mt-5">
-	<div class="container">
+			<%- include('partials/header') %>
 
-	    <!--Section: Best Features-->
-	    <section id="best-features" class="text-center">
+				<!--Main layout-->
+				<main class="mt-5">
+					<div class="container">
 
-	      <!-- Heading -->
-	      <h2 class="mb-5">Best Features</h2>
+						<!--Section: Best Features-->
+						<section id="best-features" class="text-center">
 
-	      <!--Grid row-->
-	      <div class="row d-flex justify-content-center mb-4">
+							<!-- Heading -->
+							<h2 class="mb-5">Best Features</h2>
 
-		  <!--Grid column-->
-		  <div class="col-md-8">
+							<!--Grid row-->
+							<div class="row d-flex justify-content-center mb-4">
 
-		      <!-- Description -->
-		      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi voluptate hic provident nulla repellat
-			  facere esse molestiae ipsa labore porro minima quam quaerat rem, natus repudiandae debitis est
-			  sit pariatur.</p>
+								<!--Grid column-->
+								<div class="col-md-8">
 
-		  </div>
-		  <!--Grid column-->
+									<!-- Description -->
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi voluptate hic
+										provident nulla repellat
+										facere esse molestiae ipsa labore porro minima quam quaerat rem, natus
+										repudiandae debitis est
+										sit pariatur.</p>
 
-	      </div>
-	      <!--Grid row-->
+								</div>
+								<!--Grid column-->
 
-	      <!--Grid row-->
-	      <div class="row">
+							</div>
+							<!--Grid row-->
 
-		  <!--Grid column-->
-		  <div class="col-md-4 mb-1">
-		      <i class="fas fa-camera-retro"></i>
-		      <h4 class="my-4">Experience</h4>
-		      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam, aperiam minima
-			  assumenda deleniti hic.</p>
-		  </div>
-		  <!--Grid column-->
+							<!--Grid row-->
+							<div class="row">
 
-		  <!--Grid column-->
-		  <div class="col-md-4 mb-1">
-		      <i class="fas fa-heart"></i>
-		      <h4 class="my-4">Happiness</h4>
-		      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam, aperiam minima
-			  assumenda deleniti hic.</p>
-		  </div>
-		  <!--Grid column-->
+								<!--Grid column-->
+								<div class="col-md-4 mb-1">
+									<i class="fas fa-camera-retro"></i>
+									<h4 class="my-4">Experience</h4>
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores
+										nam, aperiam minima
+										assumenda deleniti hic.</p>
+								</div>
+								<!--Grid column-->
 
-		  <!--Grid column-->
-		  <div class="col-md-4 mb-1">
-		      <i class="fas fa-bicycle"></i>
-		      <h4 class="my-4">Adventure</h4>
-		      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam, aperiam minima
-			  assumenda deleniti hic.</p>
-		  </div>
-		  <!--Grid column-->
+								<!--Grid column-->
+								<div class="col-md-4 mb-1">
+									<i class="fas fa-heart"></i>
+									<h4 class="my-4">Happiness</h4>
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores
+										nam, aperiam minima
+										assumenda deleniti hic.</p>
+								</div>
+								<!--Grid column-->
 
-	      </div>
-	      <!--Grid row-->
+								<!--Grid column-->
+								<div class="col-md-4 mb-1">
+									<i class="fas fa-bicycle"></i>
+									<h4 class="my-4">Adventure</h4>
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores
+										nam, aperiam minima
+										assumenda deleniti hic.</p>
+								</div>
+								<!--Grid column-->
 
-	    </section>
-	    <!--Section: Best Features-->
+							</div>
+							<!--Grid row-->
+
+						</section>
+						<!--Section: Best Features-->
 
 
-	    <hr class="my-5">
+						<hr class="my-5">
 
-	    <!--Section: Examples-->
-	    <section id="examples">
-
-
-
-	    </section>
-	    <!--Section: Examples-->
-
-	    <hr class="my-5">
-
-	    <!--Section: Gallery-->
-	    <section id="gallery">
+						<!--Section: Examples-->
+						<section id="examples">
 
 
 
-	    </section>
-	    <!--Section: Gallery-->
+						</section>
+						<!--Section: Examples-->
 
-	    <hr class="my-5">
+						<hr class="my-5">
 
-	    <!--Section: Contact-->
-	    <section id="contact">
+						<!--Section: Gallery-->
+						<section id="gallery">
 
 
 
-	    </section>
-	    <!--Section: Contact-->
+						</section>
+						<!--Section: Gallery-->
 
-	</div>
-    </main>
-<!--Main layout-->
-<!-- <div class="container"> -->
-<!--     <%- include('partials/navbar') %> -->
-<!--     <div class="jumbotron"> -->
-<!--         <h1>All about Yarns and Threads</h1> -->
-<!--         <p class="lead">Check out our articles below!</p> -->
-<!--     </div> -->
-<!--     <div class="row"> -->
-<!--         <div class="col-lg-12"> -->
-<!--             <div class="list-group"> -->
-<!--                 <!-1- loop over blog posts and render them -1-> -->
-<!--                 <% posts.forEach((post) => { %> -->
-<!--                     <a href="#" class="list-group-item"> -->
-<!--                         <h4 class="list-group-item-heading"><%= post.title %></h4> -->
-<!--                         <p class="list-group-item-text"><%= post.author %></p> -->
-<!--                     </a> -->
-<!--                     <br> -->
-<!--                     <br> -->
-<!--                 <% }) %> -->
-<!--             </div> -->
-<!--         </div> -->
-<!--     </div> -->
-<!--     <%- include('partials/footer') %> -->
-<!-- </div> -->
-</body>
+						<hr class="my-5">
+
+						<!--Section: Contact-->
+						<section id="contact">
+
+
+
+						</section>
+						<!--Section: Contact-->
+
+					</div>
+				</main>
+				<!--Main layout-->
+				<!-- <div class="container"> -->
+				<!--     <%- include('partials/navbar') %> -->
+				<!--     <div class="jumbotron"> -->
+				<!--         <h1>All about Yarns and Threads</h1> -->
+				<!--         <p class="lead">Check out our articles below!</p> -->
+				<!--     </div> -->
+				<!--     <div class="row"> -->
+				<!--         <div class="col-lg-12"> -->
+				<!--             <div class="list-group"> -->
+				<!--                 <!-1- loop over blog posts and render them -1-> -->
+				<!--                 <% posts.forEach((post) => { %> -->
+				<!--                     <a href="#" class="list-group-item"> -->
+				<!--                         <h4 class="list-group-item-heading"><%= post.title %></h4> -->
+				<!--                         <p class="list-group-item-text"><%= post.author %></p> -->
+				<!--                     </a> -->
+				<!--                     <br> -->
+				<!--                     <br> -->
+				<!--                 <% }) %> -->
+				<!--             </div> -->
+				<!--         </div> -->
+				<!--     </div> -->
+
+				<!--     <%- include('partials/footer') %> -->
+				<!-- </div> -->
+				
+				
+				<script>
+					const splash = document.querySelector('.splash');
+					document.addEventListener('DOMContentLoaded', (e) => {
+						setTimeout(() => {
+							splash.classList.add('display-none');
+
+						}, 2000);
+					})
+				</script>
+				
+	</body>
+
 </html>
