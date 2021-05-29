@@ -3,7 +3,7 @@
 <%- include('partials/head') %>
 
 	<body>
-		<%- include('partials/splashscreen') %>
+		<%- include('layouts/splashscreen') %>
 		<%- include('partials/navbar') %>
 
 			<%- include('partials/header') %>
@@ -136,15 +136,7 @@
 				<!-- </div> -->
 				
 				
-				<script>
-					const splash = document.querySelector('.splash');
-					document.addEventListener('DOMContentLoaded', (e) => {
-						setTimeout(() => {
-							splash.classList.add('display-none');
-
-						}, 2000);
-					})
-				</script>
+				
 				
 	</body>
 
