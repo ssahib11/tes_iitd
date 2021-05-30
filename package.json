@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "sass" : "sass public/sass/main.scss public/css/styles.css --style=compressed --embed-sources --watch",
+    "sass": "sass public/sass/main.scss public/css/styles.css -w",
     "dev": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

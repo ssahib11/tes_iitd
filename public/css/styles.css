@@ -1,1 +1,27 @@
-*,*::before,*::after{margin:0;padding:0;box-sizing:inherit}html{box-sizing:border-box;font-size:62.5%}/*# sourceMappingURL=styles.css.map */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; }
+
+.splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: radial-gradient(131.27% 136.09% at 54.62% 52.98%, rgba(237, 104, 86, 0.83) 0%, #8F1F1F 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .splash-screen-hidden {
+    display: none; }
+  .splash-screen-title {
+    font-weight: bold;
+    font-size: 64px;
+    color: #FFFFFF; }
