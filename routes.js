@@ -31,7 +31,7 @@ const posts = [
 ]
 
 routes.get('/', (req, res) => {
-    res.render('index', {title: 'TES | IITD', posts: posts});
+    res.render('index');
 });
 
 routes.get('/first', (req, res) => {

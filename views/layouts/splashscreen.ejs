@@ -1,14 +1,12 @@
-<div class="splash">
-    <h1 class="fade-in">TES</h1>
-
-
+<div class="splash-screen">
+    <div class="splash-screen-title">tes</div>
 </div>
+
 <script>
-    const splash = document.querySelector('.splash');
-    document.addEventListener('DOMContentLoaded', (e) => {
+    window.onload = (e) => { 
         setTimeout(() => {
-            splash.classList.add('display-none');
+            document.querySelector('.splash-screen').classList.add('splash-screen-hidden');
 
         }, 2000);
-    })
+    }
 </script>
