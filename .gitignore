@@ -696,6 +696,10 @@ healthchecksdb
 # Backup folder for Package Reference Convert tool in Visual Studio 2017
 MigrationBackup/
 
+# sqlite3 database for development and testing
+data/db-dev.sqlite
+data/db-test.sqlite
+
 # End of https://www.gitignore.io/api/node,linux,macos,windows,intellij,webstorm,jetbrains,visualstudio,visualstudiocode
 
 .idea/
