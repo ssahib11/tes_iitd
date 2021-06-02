@@ -31,29 +31,97 @@ html {
   color: #FFFFFF;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+.home-header {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  top: 15rem;
+  z-index: -1;
+  font-family: "Josefin Sans", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 6rem;
+  line-height: 7rem;
+  text-align: center;
+  letter-spacing: 0.1em;
+  color: #404040;
+}
+.home-header div {
+  width: min-content;
+}
+
+.home-section-container {
+  display: flex;
+  justify-content: left;
+  flex-direction: column;
+  position: relative;
+  z-index: -1;
+  top: 18rem;
+  margin-bottom: 24rem;
+}
+.home-section-container-title {
+  width: max-content;
+  height: 8rem;
+  vertical-align: middle;
+  align-content: center;
+  background: #E1E1E1;
+  margin-left: 4rem;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  padding: 1rem 2rem;
+}
+.home-section-container-para {
+  position: relative;
+  margin-left: 3rem;
+  margin-right: 3rem;
+  background: #EAE9E9;
+  border-radius: 2rem;
+  margin-bottom: 4rem;
+}
+
+section div div {
+  height: inherit;
+  width: max-content;
+  font-family: "Josefin Sans", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 4rem;
+  line-height: 8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-feature-settings: "cpsp" on;
+  color: #404040;
+}
+
+section div p {
+  padding: 3rem 3rem;
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 2rem;
+  line-height: 3rem;
+  text-align: justify;
+  letter-spacing: 0.1em;
+  text-transform: capitalize;
+  color: #404040;
 }
 
 .navbar-home {
   background-color: #D2D2D2;
-  position: absolute;
+  position: fixed;
   width: 100vw;
-  height: 6vh;
+  height: 12rem;
   top: 0;
+  display: flex;
+  z-index: -1;
 }
 .navbar-home-title {
-  float: left;
   position: absolute;
-  align-items: center;
-  width: 77px;
-  height: 56px;
-  left: 3vw;
-  top: 1vh;
-  bottom: 1vh;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  left: 4rem;
+  top: 3rem;
+  font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 8rem;
@@ -100,88 +168,16 @@ html {
   border-radius: 5px;
 }
 
-.home-header {
-  width: 100vw;
-  display: block;
-  align-items: center;
-  margin-top: 5vh;
-  position: absolute;
-  top: 5vh;
-  font-family: "Josefin Sans", sans-serif;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 5rem;
-  line-height: 60px;
-  text-align: center;
-  letter-spacing: 0.1em;
-  color: #404040;
-}
-
-.home-section-container {
-  display: flex;
-  justify-content: left;
-  margin-top: 400px;
-  flex-direction: column;
-}
-.home-section-container-title {
-  width: max-content;
-  height: 6rem;
-  vertical-align: middle;
-  align-content: center;
-  background: #E1E1E1;
-  margin-left: 2rem;
-  margin-top: 3rem;
-  margin-bottom: 2rem;
-  padding-right: 2rem;
-}
-.home-section-container-para {
-  left: 15px;
-  top: 394px;
-  margin-left: 15px;
-  margin-right: 15px;
-  background: #EAE9E9;
-  border-radius: 5px;
-}
-
-section div div {
-  padding-left: 5%;
-  height: inherit;
-  width: max-content;
-  font-family: "Josefin Sans", sans-serif;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 3rem;
-  line-height: 6rem;
-  padding-right: 5%;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  font-feature-settings: "cpsp" on;
-  color: #404040;
-}
-
-section div p {
-  padding: 20px 20px;
-  left: 33px;
-  top: 414px;
-  font-family: "Lato", sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 13px;
-  line-height: 29px;
-  text-align: justify;
-  letter-spacing: 0.1em;
-  text-transform: capitalize;
-  color: #404040;
-}
-
 .footer-home {
+  position: relative;
+  bottom: 0px;
   background-color: #ED6856;
   width: 100%;
-  height: 25vh;
-  margin-top: 4vh;
+  height: 28vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  z-index: -1;
 }
 .footer-home-right-footer-social-links {
   float: right;
@@ -189,8 +185,8 @@ section div p {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 12vw;
-  height: 18vh;
+  width: 8vh;
+  height: 23vh;
   background: #7D1111;
   border-radius: 20px;
 }
@@ -202,19 +198,19 @@ section div p {
   position: absolute;
   width: -webkit-fill-available;
   height: auto;
-  bottom: -34vh;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  bottom: 3rem;
+  font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 4.2rem;
   line-height: inherit;
-  color: white;
+  color: #FFFFFF;
 }
 .footer-home-top-footer-contact-us {
   position: absolute;
-  left: 4rem;
-  bottom: -17vh;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  left: 5rem;
+  top: 6rem;
+  font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 5.2rem;
@@ -225,46 +221,41 @@ section div p {
   list-style: none;
   position: absolute;
   width: inherit;
-  left: 10rem;
-  margin-top: -15vh;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  left: 27 rem;
+  top: 11vh;
+  font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 5.2rem;
-  margin-bottom: 1vh;
 }
 .footer-home-left-footer-call-email-logo li {
-  margin-bottom: 1vh;
+  margin-bottom: 2rem;
 }
 .footer-home-left-footer-call-email-logo img {
-  width: 50px;
-  height: 50px;
-  filter: invert(100%);
+  width: 13rem;
+  height: 9rem;
 }
 .footer-home-left-footer-call-email-text ul {
   list-style: none;
   position: absolute;
   width: inherit;
   left: 20rem;
-  margin-top: -15vh;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  top: 12vh;
+  font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 5.2rem;
-  margin-bottom: 1vh;
 }
 .footer-home-left-footer-call-email-text ul li {
-  margin-bottom: 1vh;
+  margin-bottom: 2.5vh;
 }
 .footer-home-left-footer-call-email-text ul li a {
-  color: white;
+  color: #FFFFFF;
 }
 
 .social-items img {
-  height: 4vh;
-  width: 8vw;
-  filter: invert(100%);
-  color: transparent;
+  height: 5.7vh;
+  width: 10vw;
   margin: 0.5vh;
 }
 
