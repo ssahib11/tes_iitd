@@ -1,0 +1,61 @@
+.event {
+    font-style: normal;
+    letter-spacing: 0.1em;
+    color: $color-white;
+    margin-top: 5rem;
+
+    &-brief-info {
+        display: inline-block;
+        padding: 2rem;
+        border-radius: 2rem;
+        background-color: $primary-color;
+        margin-bottom: 1.5rem;
+
+        &-name {
+            font-family: Josefin Sans;
+            font-weight: bold;
+            font-size: 4rem;
+            margin-bottom: 0.8rem;
+        }
+    
+        &-time {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 4rem;
+            background-color: $secondary-color;
+            font-family: Josefin Sans;
+            font-weight: normal;
+            font-size: 2.6rem;
+        }
+    }
+
+    &-description {
+        background-color: $background-color-medium-light;
+        border-radius: 5px;
+        
+        &-image {
+            width: 100%;
+            height: 80vw;
+            background-color: $background-color-medium-dark;
+            border-radius: 5px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            justify-items: center;
+    
+            img {
+                height: 100%;
+                width: auto;
+            }
+        }
+    
+        &-detail {
+            padding: 2rem 1.5rem;
+            font-family: Lato;
+            font-weight: normal;
+            font-size: 1.6rem;
+            text-align: justify;
+            color: $primary-title-color;
+        }
+    }
+}

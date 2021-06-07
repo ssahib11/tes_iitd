@@ -1,0 +1,5 @@
+<div class="division-title"><%= divisionTitle %></div>
+
+<% Object.keys(division).forEach(function(member) { %>
+    <%- include('teamMemberInfo', { member: division[member] }); %>
+<% } %>

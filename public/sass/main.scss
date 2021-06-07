@@ -1,7 +1,14 @@
-@import "abstracts/variables";
 @import "base/base";
-@import "abstracts/mixins";
+
+@import "abstracts/variables";
+
 @import "layouts/splash";
 @import "layouts/home";
+@import "layouts/page";
+
 @import "components/header";
 @import "components/footer";
+@import "components/pageTitle";
+@import "components/event";
+@import "components/teamDivision";
+@import "components/teamMemberInfo";

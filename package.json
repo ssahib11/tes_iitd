@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "sass": "sass public/sass/main.scss public/css/styles.css -w",
-    "dev": "nodemon server.js",
+    "dev": "nodemon server.js -w",
     "sequelize": "./node_modules/.bin/sequelize-cli",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
