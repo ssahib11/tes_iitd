@@ -1,9 +1,18 @@
 <div class="page">
     <%- include('../partials/pageTitle', { pageTitle: "Events" }); %>
     
-    <% if (Object.keys(eventsList).length > 0) { %>
-        <% Object.keys(eventsList).forEach(function(event) { %>
-            <%- include(',,/partials/event', { event: eventsList[event] }); %>
+    <% if (Object.keys(eventList).length > 0) { %>
+        <% Object.keys(eventList).forEach(function(event) { %>
+            <div class="event">
+                <div class="event-brief-info">
+                    <div class="event-brief-info-name"><%= eventList[event].name %></div>
+                    <div class="event-brief-info-time"><%= eventList[event].time %></div>
+                </div>
+                <div class="event-description">
+                    <div class="event-description-image"><img src="<%= eventList[event].image %>"></div>
+                    <div class="event-description-detail"><%= eventList[event].description %></div>
+                </div>
+            </div>
         <% } %>
     <% } %>
 </div>
