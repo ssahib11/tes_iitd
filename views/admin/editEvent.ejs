@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('./partials/head', {title: 'TES Admin | Edit Event'}); %>
+    </head>
+    <!-- <body class="text-center"> -->
+    <body>
+        <%- include('./partials/navbar'); %>
+        <div class="container">
+            <h4 class="text-center"> Add new Event </h4>
+            <img id="preview" class="rounded mx-auto d-block" width="600">
+            <form class="row g-3" action="/admin/events/add" method="post">
+                <div class="col-12">
+                    <label for="Title" class="form-label">Title</label>
+                    <input type="text" class="form-control" id="title">
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label" for="image">Event Image</label>
+                    <input type="file" accept="image/*" class="form-control" id="image" onchange="loadImage(event)">
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label" for="date">Event Date</label>
+                    <input type="date" class="form-control" id="date">
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label" for="date">Event Time (24 Hr Format)</label>
+                    <input type="time" class="form-control" id="date">
+                </div>
+                <div class="col-12">
+                    <label for="Description" class="form-label">Description</label>
+                    <textarea class="form-control" id="description" rows="5"></textarea>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+        <%- include('./partials/scripts'); %>
+    <script>
+        const loadImage = (event) => {
+            const image = document.getElementById('preview');
+            image.src = URL.createObjectURL(event.target.files[0]);
+        };
+    </script>
+    </body>
+</html>
