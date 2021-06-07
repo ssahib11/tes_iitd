@@ -8,19 +8,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 100;
 
     &-hidden {
         display: none;
     }
 
     &-title {
-        font-family: $font-family-Roboto;
-        font-style: normal;
         font-weight: bold;
-        font-size: 8rem;
-        line-height: 9.4rem;
-        letter-spacing: 0.2em;
-        color: $color-white;
+        font-size: 64px;
+        color: #FFFFFF;
     }
 }
