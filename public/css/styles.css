@@ -3,11 +3,12 @@
 *::after {
   margin: 0;
   padding: 0;
-  box-sizing: inherit; }
+  box-sizing: inherit;
+}
 
 html {
   box-sizing: border-box;
-  font-size: 62.5%; }
+}
 
 .splash-screen {
   position: fixed;
@@ -18,10 +19,197 @@ html {
   background-image: radial-gradient(131.27% 136.09% at 54.62% 52.98%, rgba(237, 104, 86, 0.83) 0%, #8F1F1F 100%);
   display: flex;
   justify-content: center;
-  align-items: center; }
-  .splash-screen-hidden {
-    display: none; }
-  .splash-screen-title {
-    font-weight: bold;
-    font-size: 64px;
-    color: #FFFFFF; }
+  align-items: center;
+  z-index: 100;
+}
+.splash-screen-hidden {
+  display: none;
+}
+.splash-screen-title {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 8rem;
+  line-height: 9.4rem;
+  letter-spacing: 0.2em;
+  color: #FFFFFF;
+}
+
+.home {
+  color: #404040;
+  background-color: #F3F3F3;
+  padding: 3.5rem 2rem;
+}
+
+.home-title {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: "Josefin Sans", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 6rem;
+  line-height: 7rem;
+  letter-spacing: 0.1em;
+}
+.home-title span {
+  color: #ED6856;
+}
+.home-title div {
+  width: min-content;
+}
+
+.home-section-container {
+  margin-top: 3rem;
+  font-style: normal;
+  letter-spacing: 0.1em;
+}
+.home-section-container-title {
+  display: inline-block;
+  padding: 2rem;
+  border-radius: 5px;
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: bold;
+  font-size: 3rem;
+  background-color: #E1E1E1;
+  margin-bottom: 2rem;
+}
+.home-section-container-description {
+  padding: 2rem;
+  font-family: "Lato", sans-serif;
+  font-weight: normal;
+  font-size: 2.5rem;
+  line-height: 3.6rem;
+  text-align: justify;
+  background-color: #EAE9E9;
+  border-radius: 5px;
+  margin-bottom: 5rem;
+}
+.home-section-container:last-child {
+  margin-bottom: 0;
+}
+
+.navbar {
+  background-color: #D2D2D2;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 9.4rem;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+.navbar-title {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 6rem;
+  line-height: 7rem;
+  letter-spacing: 0.1em;
+  color: #ED6856;
+}
+.navbar-menu-btn {
+  align-self: center;
+  width: 6.75rem;
+  height: 0.88rem;
+  background-color: #ED6856;
+  border-radius: 5px;
+  position: relative;
+}
+.navbar-menu-btn::before, .navbar-menu-btn::after {
+  content: "";
+  display: inline-block;
+  width: 100%;
+  height: 0.88rem;
+  background-color: #ED6856;
+  border-radius: 5px;
+  position: absolute;
+  left: 0;
+}
+.navbar-menu-btn::before {
+  top: -1.75rem;
+}
+.navbar-menu-btn::after {
+  top: 1.75rem;
+}
+
+.footer {
+  position: sticky;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  padding: 2rem 4rem;
+  background-color: #ED6856;
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  color: #FFFFFF;
+  letter-spacing: 2px;
+  position: relative;
+  margin-top: -5rem;
+}
+.footer-top-element-contact-us {
+  font-size: 3rem;
+}
+.footer-left-element {
+  display: inline-block;
+  padding: 2rem 1rem;
+}
+.footer-left-element ul {
+  list-style: none;
+}
+.footer-left-element ul li {
+  margin-bottom: 2rem;
+}
+.footer-left-element ul li a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+.footer-left-element ul li a span {
+  font-size: 2.8rem;
+  color: #FFFFFF;
+}
+.footer-left-element ul li a span img {
+  width: 5rem;
+  height: 5rem;
+  margin-right: 2rem;
+}
+.footer-right-element {
+  position: absolute;
+  top: 4rem;
+  right: 0;
+  padding: 2rem;
+  border-radius: 1.25rem;
+  background-color: #7D1111;
+}
+.footer-right-element ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.footer-right-element ul li {
+  margin-bottom: 1.5rem;
+}
+.footer-right-element ul li:last-child {
+  margin-bottom: 0;
+}
+.footer-right-element ul li a {
+  text-decoration: none;
+}
+.footer-right-element ul li a img {
+  width: 5rem;
+  height: 5rem;
+}
+.footer-bottom-element {
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+/*# sourceMappingURL=styles.css.map */

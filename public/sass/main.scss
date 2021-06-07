@@ -1,2 +1,7 @@
+@import "abstracts/variables";
 @import "base/base";
-@import "layouts/splash"
+@import "abstracts/mixins";
+@import "layouts/splash";
+@import "layouts/home";
+@import "components/header";
+@import "components/footer";
