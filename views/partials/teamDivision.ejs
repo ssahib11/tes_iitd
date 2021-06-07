@@ -1,0 +1,17 @@
+<div class="division-title"><%= divisionTitle %></div>
+
+<% Object.keys(division).forEach(function(member) { %>
+    <div class="member">
+        <div class="member-image-container">
+            <img src="<%= division[member].image %>" alt="Member Image">
+        </div>
+        <div class="member-name"><%= division[member].name %></div>
+        <div class="member-designation"><%= division[member].designation %></div>
+        <div class="member-contact-links">
+            <ul>
+                <li><a href="<%= division[member].contactInstagram %>"><img src="icons/instagram.svg" alt="Instagram Contact Link"></a></li>
+                <li><a href="<%= division[member].contactLinkedin %>"><img src="icons/linkedin.svg" alt="Linkedin Contact Link"></a></li>
+            </ul>
+        </div>    
+    </div>
+<% } %>
