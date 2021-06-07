@@ -1,84 +1,59 @@
-.home-header{
-    width: 100vw;
+.home {
+    color: $primary-title-color;
+    background-color: $background-color-light;
+    padding: 3.5rem 2rem;
+}
+
+.home-title {
+    width: 100%;
     display: flex;
-    align-items: center;
     justify-content: center;
-    position: relative;
-    top: 15rem;
-    z-index: -1;
-    font-family:$font-family-Josefin-Sans;
+    align-items: center;
+    text-align: center;
+    font-family: $font-family-Josefin-Sans;
     font-style: normal;
     font-weight: 600;
     font-size: 6rem;
     line-height: 7rem;
-    text-align: center;
     letter-spacing: 0.1em;
-    color:$secondary-text-color;
 
-    div{
-        width:min-content;
+    span {
+        color: $primary-color;
+    }
+
+    div {
+        width: min-content;
     }
 }
 
+.home-section-container {
+    margin-top: 3rem;
+    font-style: normal;
+    letter-spacing: 0.1em;
 
-.home-section-container{
-    display: flex;
-    justify-content: left;
-    flex-direction: column;
-    position: relative;
-    z-index: -1;
-    top: 18rem;
-    margin-bottom: 24rem;
-
-    &-title{
-        width: max-content;
-        height: 8rem;
-        vertical-align: middle;
-        align-content: center;
-        background: #E1E1E1;
-        margin-left: 4rem;
-        margin-top: 3rem;
+    &-title {
+        display: inline-block;
+        padding: 2rem;
+        border-radius: 5px;
+        font-family: $font-family-Josefin-Sans;
+        font-weight: bold;
+        font-size: 3rem;
+        background-color: $background-color-medium-dark;
         margin-bottom: 2rem;
-        padding: 1rem 2rem;
     }
 
-    &-para{
-        position: relative;
-        margin-left: 3rem;
-        margin-right: 3rem;
-        background: #EAE9E9;
-        border-radius: 2rem;
-        margin-bottom: 4rem;
-        
+    &-description {
+        padding: 2rem; 
+        font-family: $font-family-Lato;
+        font-weight: normal;
+        font-size: 2.5rem;
+        line-height: 3.6rem;
+        text-align: justify;
+        background-color: $background-color-medium-light;
+        border-radius: 5px;
+        margin-bottom: 5rem;        
+    }
+    &:last-child {
+        margin-bottom: 0;
     }
 }
-
-section div div {
-   
-    height: inherit;
-    width: max-content;
-    font-family: "Josefin Sans", sans-serif;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 4rem;
-    line-height: 8rem;
-   letter-spacing: 0.1em;
-    text-transform: uppercase;
-    font-feature-settings: "cpsp" on;
-    color: #404040;
-}
-
-section div p{
-    padding: 3rem 3rem;
-    font-family: 'Lato', sans-serif;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 2rem;
-    line-height: 3rem;
-    text-align: justify;
-    letter-spacing: 0.1em;
-    text-transform: capitalize;
-    color: #404040;
-
-}
-
