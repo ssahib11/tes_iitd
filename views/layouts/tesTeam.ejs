@@ -1,0 +1,19 @@
+<div class="page">
+    <%- include('../partials/teamMember/pageTitle', { pageTitle: "TES Team" }); %>
+    
+    <% if (Object.keys(hod).length > 0) { %>
+        <%- include('../partials/teamMember/teamDivision', { divisionTitle: "Head of Department", division: hod }); %>
+    <% } %>
+    
+    <% if (Object.keys(generalSecretary).length > 0) { %>
+        <%- include('../partials/teamMember/teamDivision', { divisionTitle: "General Secretary", division: generalSecretary }); %>
+    <% } %>
+    
+    <% if (Object.keys(coordinator).length > 0) { %>
+        <%- include('../partials/teamMember/teamDivision', { divisionTitle: "Co-ordinators", division: coordinator }); %>
+    <% } %>
+    
+    <% if (Object.keys(executive).length > 0) { %>
+        <%- include('../partials/teamMember/teamDivision', { divisionTitle: "Executives", division: executive }); %>
+    <% } %>
+</div>

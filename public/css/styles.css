@@ -91,6 +91,11 @@ html {
   margin-bottom: 0;
 }
 
+.page {
+  padding: 3.5rem 2rem;
+  background-color: #F3F3F3;
+}
+
 .navbar {
   background-color: #D2D2D2;
   position: sticky;
@@ -210,6 +215,139 @@ html {
 .footer-bottom-element {
   text-align: center;
   font-size: 1.2rem;
+}
+
+.page-title {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 4.5rem;
+  line-height: 5.3rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #404040;
+}
+
+.event {
+  font-style: normal;
+  letter-spacing: 0.1em;
+  color: #FFFFFF;
+  margin-top: 5rem;
+}
+.event-brief-info {
+  display: inline-block;
+  padding: 2rem;
+  border-radius: 2rem;
+  background-color: #ED6856;
+  margin-bottom: 1.5rem;
+}
+.event-brief-info-name {
+  font-family: Josefin Sans;
+  font-weight: bold;
+  font-size: 4rem;
+  margin-bottom: 0.8rem;
+}
+.event-brief-info-time {
+  display: inline-block;
+  padding: 1rem 2rem;
+  border-radius: 4rem;
+  background-color: #7D1111;
+  font-family: Josefin Sans;
+  font-weight: normal;
+  font-size: 2.6rem;
+}
+.event-description {
+  background-color: #EAE9E9;
+  border-radius: 5px;
+}
+.event-description-image {
+  width: 100%;
+  height: 80vw;
+  background-color: #E1E1E1;
+  border-radius: 5px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+}
+.event-description-image img {
+  height: 100%;
+  width: auto;
+}
+.event-description-detail {
+  padding: 2rem 1.5rem;
+  font-family: Lato;
+  font-weight: normal;
+  font-size: 1.6rem;
+  text-align: justify;
+  color: #404040;
+}
+
+.division-title {
+  display: inline-block;
+  padding: 1.5rem 2rem;
+  border-radius: 1rem;
+  color: #FFFFFF;
+  background-color: #ED6856;
+  font-family: Josefin Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 4rem;
+  letter-spacing: 0.1em;
+  margin-top: 5rem;
+}
+
+.member {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4rem;
+}
+.member-image-container {
+  width: 50vw;
+  height: 50vw;
+  border-radius: 50%;
+  background-color: #E1E1E1;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+.member-image-container img {
+  height: 100%;
+  width: auto;
+  border-radius: 50%;
+}
+.member-name, .member-designation {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 3rem;
+  letter-spacing: 2px;
+  color: #404040;
+  margin-bottom: 0.4rem;
+}
+.member-designation {
+  margin-bottom: 1rem;
+}
+.member-contact-links ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.member-contact-links ul li {
+  margin-right: 5rem;
+}
+.member-contact-links ul li:last-child {
+  margin-right: 0;
+}
+.member-contact-links ul li a {
+  text-decoration: none;
+}
+.member-contact-links ul li a img {
+  width: 5rem;
+  height: 5rem;
+  filter: invert(90%) sepia(1%) saturate(100%) hue-rotate(327deg) brightness(100%) contrast(76%);
 }
 
 /*# sourceMappingURL=styles.css.map */

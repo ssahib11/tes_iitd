@@ -1,0 +1,9 @@
+<div class="page">
+    <%- include('../partials/pageTitle', { pageTitle: "Events" }); %>
+    
+    <% if (Object.keys(eventsList).length > 0) { %>
+        <% Object.keys(eventsList).forEach(function(event) { %>
+            <%- include(',,/partials/event', { event: eventsList[event] }); %>
+        <% } %>
+    <% } %>
+</div>
