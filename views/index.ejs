@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
-	<%- include('partials/head', {title: "TES | IITD"}); %>
+<%- include('partials/head', {title: "TES | IITD" }); %>
+
 	<body>
-		<%- include('layouts/splashscreen'); %>	
-		<%- include('partials/header'); %>		
-		<%- include('layouts/home'); %>		
-		<%- include('partials/footer'); %>		
+		<%- include('layouts/splashscreen'); %>
+			<%- include('partials/header'); %>
+				<%- include('layouts/home'); %>
+					<%- include('partials/footer'); %>
 	</body>
+
 </html>
