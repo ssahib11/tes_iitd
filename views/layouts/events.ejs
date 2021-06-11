@@ -11,6 +11,9 @@
                 <div class="event-description">
                     <div class="event-description-image"><img src="<%= eventList[event].image %>"></div>
                     <div class="event-description-detail"><%= eventList[event].description %></div>
+                    <div class="event-description-registration-link-container">
+                        <a href="<%= eventList[event].link %>" class="event-description-registration-link">Click here to register</a>
+                    </div>
                 </div>
             </div>
         <% } %>

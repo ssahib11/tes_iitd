@@ -1,4 +1,80 @@
 <nav class="navbar">
     <div class="navbar-title">tes</div>
-    <div class="navbar-menu-btn"></div>
+    <div class="navbar-menu-btn-container">
+        <div class="navbar-menu-btn-close-top"></div>
+        <div class="navbar-menu-btn-close-middle"></div>
+        <div class="navbar-menu-btn-close-bottom"></div>
+    </div>  
 </nav>
+<div class="navbar-menu">
+    <ul class="navbar-menu-list">
+        <li class="navbar-menu-list-item active">
+            <a href="#" class="navbar-menu-list-item-link">
+                Home
+            </a>
+        </li>
+        <li class="navbar-menu-list-item">
+            <a href="#" class="navbar-menu-list-item-link">
+                Events
+            </a>
+        </li>
+        <li class="navbar-menu-list-item">
+            <a href="#" class="navbar-menu-list-item-link">
+                Blogs
+            </a>
+        </li>
+        <li class="navbar-menu-list-item">
+            <a href="#" class="navbar-menu-list-item-link">
+                Alumni
+            </a>
+        </li>
+        <li class="navbar-menu-list-item">
+            <a href="#" class="navbar-menu-list-item-link">
+                TES Team
+            </a>
+        </li>
+        <li class="navbar-menu-list-item">
+            <a href="#" class="navbar-menu-list-item-link">
+                Contact Us
+            </a>
+        </li>
+    </ul>
+</div>
+
+<script>
+    const navbarMenuBtnContainer = document.querySelector('.navbar-menu-btn-container');
+    const navbarMenuBtnCloseTop = document.querySelector('.navbar-menu-btn-close-top');
+    const navbarMenuBtnCloseMiddle = document.querySelector('.navbar-menu-btn-close-middle');
+    const navbarMenuBtnCloseBottom = document.querySelector('.navbar-menu-btn-close-bottom');
+    const navbarMenu = document.querySelector('.navbar-menu');
+    const navbarMenuListItem = document.querySelectorAll('.navbar-menu-list-item');
+    const navbarMenuListItemLink = document.querySelectorAll('.navbar-menu-list-item-link');
+
+    let showMenu = false;
+
+    navbarMenuBtnContainer.addEventListener('click', toggleMenu);
+
+    function toggleMenu() {
+        if (!showMenu) {
+            navbarMenuBtnCloseTop.classList.add('navbar-menu-btn-open-top');
+            navbarMenuBtnCloseMiddle.classList.add('navbar-menu-btn-open-middle');
+            navbarMenuBtnCloseBottom.classList.add('navbar-menu-btn-open-bottom');
+            navbarMenu.classList.add('navbar-menu-show');            
+            navbarMenuListItem.forEach(item => item.classList.add('navbar-menu-list-item-show'));
+            navbarMenuListItemLink.forEach(item => item.classList.add('navbar-menu-list-item-link-show'));
+
+            showMenu = true;
+        } else {
+            navbarMenuBtnCloseTop.classList.remove('navbar-menu-btn-open-top');
+            setTimeout(function(){
+                navbarMenuBtnCloseMiddle.classList.remove('navbar-menu-btn-open-middle');
+            }, 300);            
+            navbarMenuBtnCloseBottom.classList.remove('navbar-menu-btn-open-bottom');
+            navbarMenu.classList.remove('navbar-menu-show');
+            navbarMenuListItem.forEach(item => item.classList.remove('navbar-menu-list-item-show'));
+            navbarMenuListItemLink.forEach(item => item.classList.remove('navbar-menu-list-item-link-show'));
+
+            showMenu = false;
+        }
+    }
+</script>
