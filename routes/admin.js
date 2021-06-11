@@ -31,6 +31,7 @@ const fileFilter = (req, file, cb) => {
     if (file.mimetype == 'image/jpeg' || file.mimetype == 'image/png') {
         cb(null, true);
     } else {
+        req.fileValidationError = 'Only jpeg and png files supported';
         cb(null, false);
     }
 }
@@ -42,6 +43,8 @@ const upload = multer({
         fileSize: 5 * 1024 * 1024
     }
 });
+
+const uploadImage = upload.single('image');
 
 router.get('/', ensureAuthenticated, (req, res) => {
     if (req.user) {
@@ -140,14 +143,31 @@ router.post('/login', (req, res, next) => {
 
 router.post(
     '/events/add', 
-    upload.single('image'), 
+    (req, res, next) => {
+        uploadImage(req, res, err => {
+            const eventObj = {
+                title: req.body.title,
+                date: req.body.date,
+                time: req.body.time,
+                description: req.body.description
+            };
+            if (req.fileValidationError) {
+                return res.render('admin/addEvent', { event: eventObj });
+            }  else if (req.file == null) {
+                return res.render('admin/addEvent', { event: eventObj });
+            } else if (err instanceof multer.MulterError) {
+                return res.render('admin/addEvent', { event: eventObj });
+            }
+            next();
+        });
+    },
     body('title').trim().isLength({ min: 1 }).escape().withMessage("No title Specified"),
         // .isAlphanumeric().withMessage("Title has non-alphanumeric characters"),
-    body('description').isLength({ min: 1}).escape().withMessage("No Description Provided"),
+    body('description').trim().isLength({ min: 1 }).escape().withMessage("No Description Provided"),
         // .isAlphanumeric().withMessage("Descripition has non-alphanumeric characters"),
     body('date').isISO8601().withMessage("Date in incorrect format"),
     body('time').matches('^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$|^(?![\\s\\S])').withMessage("Time in incorrect format"),
-    async (req, res) => {
+    async (req, res, err) => {
         console.log(req.file);
         console.log(req.body);
         const eventObj = {
@@ -180,11 +200,76 @@ router.post(
             });
             return res.redirect('/admin/events');
         }
-});
+    }
+);
 
-router.post('/events/update/:id', upload.single('image'), async (req, res) => {
-    const event = await db.Events.findByPk(req.params.id);
-    return res.json(event);
+router.post(
+    '/events/edit/:id', 
+    (req, res, next) => {
+        uploadImage(req, res, err => {
+            const eventObj = {
+                id: req.params.id,
+                title: req.body.title,
+                date: req.body.date,
+                time: req.body.time,
+                description: req.body.description
+            };
+            if (req.fileValidationError) {
+                return res.render('admin/updateEvent', { event: eventObj });
+            } else if (err instanceof multer.MulterError) {
+                return res.render('admin/updateEvent', { event: eventObj });
+            }
+            next();
+        });
+    },
+    body('title').trim().isLength({ min: 1 }).escape().withMessage("No Title Specified"),
+    body('description').trim().isLength({ min: 1 }).escape().withMessage("No Description Provided"),
+    body('date').isISO8601().withMessage("Date in incorrect format"),
+    body('time').matches('^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$|^(?![\\s\\S])').withMessage("Time in incorrect format"),
+    async (req, res) => {
+        console.log(req.file);
+        console.log(req.body);
+        const eventObj = {
+            id: req.params.id,
+            title: req.body.title,
+            date: req.body.date,
+            time: req.body.time,
+            description: req.body.description
+        };
+        const errors = validationResult(req);
+        if (!errors.isEmpty() & req.file) {
+            fs.unlink(req.file.path, (err) => {
+                if (err) {
+                    console.error(err);
+                }
+                console.log("image deleted");
+            });
+            console.log(errors);
+            return res.render('admin/updateEvent', { event : eventObj });
+        } else {
+            const dateStr = (eventObj.time == '') ? eventObj.date : eventObj.date + 'T' + eventObj.time + ':00+0530';
+            console.log(dateStr);
+            const date = new Date(dateStr);
+            console.log(date);
+            const event = await db.Events.findByPk(req.params.id);
+            event.title = eventObj.title;
+            event.date = date;
+            event.description = eventObj.description;
+            if (req.file != null) {
+                fs.unlink('public/' + event.image_path, (err) => {
+                    if (err) {
+                        console.error(err);
+                        console.log("couldn't delete image");
+                    }
+                    console.log("image deleted");
+                });
+                const path = req.file.path.replace('public', '');
+                console.log(path);
+                event.image_path = path;
+            }
+            await event.save();
+            return res.redirect('/admin/events');
+        }
 });
 
 module.exports = router;
