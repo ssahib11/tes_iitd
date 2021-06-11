@@ -9,7 +9,7 @@
     display: flex;
     justify-content: space-between;
     text-align: center;
-    
+    z-index: 2;
 
     &-title {
         font-family:$font-family-Roboto;
@@ -19,55 +19,50 @@
         line-height: 7rem;
         letter-spacing: 0.1em;
         color: $primary-color;
-        
     }
-    
+
     &-menu-btn {
-        align-self: center;
-        width: 6.75rem;
-        height: 0.88rem;
-        background-color: $primary-color;
-        border-radius: 5px;
-        position: relative;
-        cursor: pointer;
-    @include transition-ease;
 
-            
-        &::before, &::after {
-            content: "";
-            display: inline-block;
-            width: 100%;
-            height: 0.88rem;
-            background-color: $primary-color;
-            border-radius: 5px;
-            position: absolute;
-            left: 0;
-            @include transition-ease;
+        &-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
         }
-
-        &::before {
-            top: -1.75rem;
-        }
-
-        &::after {
-            top: 1.75rem;
-        }
-        &.open {
-            
-            background: transparent;
-      
-            &::before {
-              transform: translateY(1.75rem) rotate(45deg);
+    
+        &-close {
+    
+            &-middle, &-top, &-bottom {
+                width: 6.75rem;
+                height: 0.88rem;
+                background-color: $primary-color;
+                border-radius: 5px;
+                transition: all 0.5s ease-in-out;
             }
-      
-            &::after {
-              
-              transform: translateY(-1.75rem) rotate(-45deg);
-              
+        
+            &-top {
+                margin-bottom: 0.75rem;
             }
-          }
+        
+            &-bottom {
+                margin-top: 0.75rem;
+            }
         }
-      }
-      
-  
-     
+    
+        &-open {
+    
+            &-middle {
+                display: none;
+            }
+    
+            &-top {
+                transform: translateY(1.19rem) rotate(45deg);
+            }
+        
+            &-bottom {
+                transform: translateY(-1.19rem) rotate(-45deg);      
+            }
+        }
+    }
+}

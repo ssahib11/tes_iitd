@@ -3,6 +3,7 @@
     letter-spacing: 0.1em;
     color: $color-white;
     margin-top: 5rem;
+    margin-bottom: 4rem;
 
     &-brief-info {
         display: inline-block;
@@ -56,6 +57,28 @@
             font-size: 1.6rem;
             text-align: justify;
             color: $primary-title-color;
+        }
+
+        &-registration-link-container {
+            padding: 0 1.5rem 2rem 1.5rem;
+        }
+
+        &-registration-link {
+            display: inline-block;
+            text-decoration: none;
+            font-family: Lato;
+            font-weight: bold;
+            font-size: 3rem;
+            letter-spacing: 2px; 
+            color: $primary-color;
+            margin-bottom: 4px;
+            border-bottom: 4px solid $primary-color;
+            cursor: pointer;
+
+            &:hover {
+                color: $secondary-color;
+                border-bottom: 4px solid $secondary-color;
+            }
         }
     }
 }
