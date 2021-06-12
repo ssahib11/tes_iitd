@@ -1,4 +1,5 @@
 .page {
     padding: 3.5rem 2rem;
     background-color: $background-color-light;
+    min-height: calc(100vh - (9.4rem + 29.58rem));
 }
