@@ -62,7 +62,6 @@ html {
 }
 
 .home-section-container {
-  margin-top: 3rem;
   font-style: normal;
   letter-spacing: 0.1em;
 }
@@ -74,6 +73,7 @@ html {
   font-weight: bold;
   font-size: 3rem;
   background-color: #EAE9E9;
+  margin-top: 4rem;
   margin-bottom: 2rem;
 }
 .home-section-container-description {
@@ -85,15 +85,12 @@ html {
   text-align: justify;
   background-color: #F3F3F3;
   border-radius: 5px;
-  margin-bottom: 5rem;
-}
-.home-section-container:last-child {
-  margin-bottom: 0;
 }
 
 .page {
   padding: 3.5rem 2rem;
   background-color: #FDFDFD;
+  min-height: calc(100vh - (9.4rem + 29.58rem));
 }
 
 .navbar {
@@ -149,9 +146,8 @@ html {
 }
 
 .footer {
-  position: sticky;
+  position: fixed;
   left: 0;
-  bottom: 0;
   width: 100vw;
   padding: 2rem 4rem;
   background-color: #ED6856;
@@ -161,7 +157,6 @@ html {
   color: #FFFFFF;
   letter-spacing: 2px;
   position: relative;
-  margin-top: -5rem;
 }
 .footer-top-element-contact-us {
   font-size: 3rem;
@@ -220,7 +215,7 @@ html {
 }
 .footer-bottom-element {
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 2.2rem;
 }
 
 .page-title {
@@ -239,10 +234,10 @@ html {
   letter-spacing: 0.1em;
   color: #FFFFFF;
   margin-top: 5rem;
-  margin-bottom: 4rem;
 }
 .event-brief-info {
-  display: inline-block;
+  width: max-content;
+  max-width: 100%;
   padding: 2rem;
   border-radius: 2rem;
   background-color: #ED6856;
@@ -252,11 +247,12 @@ html {
   font-family: Josefin Sans;
   font-weight: bold;
   font-size: 4rem;
-  margin-bottom: 0.8rem;
+  margin-bottom: 1.5rem;
 }
 .event-brief-info-time {
   display: inline-block;
   padding: 1rem 2rem;
+  margin-left: -1rem;
   border-radius: 4rem;
   background-color: #7D1111;
   font-family: Josefin Sans;

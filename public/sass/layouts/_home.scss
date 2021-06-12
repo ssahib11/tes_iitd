@@ -27,7 +27,6 @@
 }
 
 .home-section-container {
-    margin-top: 3rem;
     font-style: normal;
     letter-spacing: 0.1em;
 
@@ -39,6 +38,7 @@
         font-weight: bold;
         font-size: 3rem;
         background-color: $background-color-medium-dark;
+        margin-top: 4rem;
         margin-bottom: 2rem;
     }
 
@@ -50,10 +50,6 @@
         line-height: 3.6rem;
         text-align: justify;
         background-color: $background-color-medium-light;
-        border-radius: 5px;
-        margin-bottom: 5rem;        
-    }
-    &:last-child {
-        margin-bottom: 0;
+        border-radius: 5px;        
     }
 }

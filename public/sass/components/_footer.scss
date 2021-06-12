@@ -1,7 +1,6 @@
 .footer {
-    position: sticky;
+    position: fixed;
     left: 0;
-    bottom: 0;
     width: 100vw;
     padding: 2rem 4rem;
     background-color: $primary-color;
@@ -11,7 +10,6 @@
     color: $color-white;
     letter-spacing: 2px;
     position: relative;
-    margin-top: -5rem;
     
     &-top-element-contact-us {
         font-size: 3rem;           
@@ -84,6 +82,6 @@
 
     &-bottom-element {
         text-align: center;
-        font-size: 1.2rem;
+        font-size: 2.2rem;
     }
 }
