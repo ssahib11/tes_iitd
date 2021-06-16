@@ -23,7 +23,13 @@ const storage = multer.diskStorage({
     },
     filename: (req, file, cb) => {
         console.log(file);
-        cb(null, req.body.title.replace(/\ /g, '') + '-' + file.originalname);
+        if (req.body.type == "event") {
+            cb(null, req.body.title.replace(/\ /g, '') + '-' + file.originalname);
+        } else if (req.body.type == "team") {
+            cb(null, req.body.name.replace(/\ /g, '') + '-' + file.originalname);
+        } else {
+            cb(null, req.body.title.replace(/\ /g, '') + '-' + file.originalname);
+        }
     }
 });
 
@@ -61,6 +67,11 @@ router.get('/login', (req, res) => {
     }
 });
 
+router.get('/logout',  (req, res) => {
+    req.logout();
+    res.redirect('login');
+});
+
 router.get('/dashboard', ensureAuthenticated, (req, res) => {
     res.render('admin/dashboard');
 });
@@ -69,13 +80,63 @@ router.get('/blog', ensureAuthenticated, (req, res) => {
     res.render('admin/blog');
 });
 
-router.get('/team', ensureAuthenticated, (req, res) => {
-    res.render('admin/team');
+router.get('/team', ensureAuthenticated, async (req, res) => {
+    const supervisors = await db.Team.findAll({
+        where: {
+            category: "Supervisor"
+        }
+    });
+    const studentHead = await db.Team.findAll({
+        where: {
+            category: "Student Head"
+        }
+    });
+    const coordinators = await db.Team.findAll({
+        where: {
+            category: "Coordinator"
+        }
+    });
+    const executives = await db.Team.findAll({
+        where: {
+            category: "Executive"
+        }
+    });
+
+    res.render('admin/team',{ supervisors: supervisors, studentHead: studentHead, coordinators: coordinators, executives: executives });
 });
 
-router.get('/logout',  (req, res) => {
-    req.logout();
-    res.redirect('login');
+router.get('/team/add', (req, res) => {
+    const memberObj = {
+        id: null,
+        name: "",
+        designation:"",
+        category: "",
+        image: ""
+    };
+    return res.render('admin/addTeamMember', { member: memberObj });
+});
+
+router.get('/team/edit/:id', async (req, res) => {
+    dbMember = await db.Team.findByPk(req.params.id);
+    const memberObj = {
+        id: dbMember.id,
+        name: dbMember.name,
+        designation: dbMember.designation,
+        category: dbMember.category,
+        image: dbMember.image
+    };
+    res.render('admin/updateTeamMember', { member: memberObj });
+});
+
+router.get('/team/delete/:id', async (req, res) => {
+    dbMember = await db.Team.findByPk(req.params.id);
+    fs.unlink('public/' + dbMember.image, (err) => {
+        if (err) { 
+            console.log(err);
+        }
+        console.log("Profile image deleted");
+    });
+    res.redirect('/admin/team');
 });
 
 router.get('/events',ensureAuthenticated, async (req, res) => {
@@ -88,7 +149,7 @@ router.get('/events',ensureAuthenticated, async (req, res) => {
 });
 
 router.get('/events/add', async (req, res) => {
-    eventObj = {
+    const eventObj = {
         id: null,
         title : "",
         date: "",
@@ -237,7 +298,7 @@ router.post(
             description: req.body.description
         };
         const errors = validationResult(req);
-        if (!errors.isEmpty() & req.file) {
+        if (!errors.isEmpty() && req.file) {
             fs.unlink(req.file.path, (err) => {
                 if (err) {
                     console.error(err);
@@ -255,21 +316,145 @@ router.post(
             event.title = eventObj.title;
             event.date = date;
             event.description = eventObj.description;
-            if (req.file != null) {
-                fs.unlink('public/' + event.image_path, (err) => {
-                    if (err) {
-                        console.error(err);
-                        console.log("couldn't delete image");
-                    }
-                    console.log("image deleted");
-                });
-                const path = req.file.path.replace('public', '');
-                console.log(path);
-                event.image_path = path;
+            if (req.file != null) { 
+                const newPath = req.file.path.replace('public', '');
+                if (newPath != event.image_path) {
+                    fs.unlink('public/' + event.image_path, (err) => {
+                        if (err) {
+                            console.error(err);
+                            console.log("couldn't delete image");
+                        }
+                        console.log("image deleted");
+                    });
+                    // const path = req.file.path.replace('public', '');
+                    console.log(NewPath);
+                    event.image_path = newPath;
+                }
             }
             await event.save();
             return res.redirect('/admin/events');
         }
-});
+    }
+);
+
+router.post(
+    '/team/add',
+    (req, res, next) => {
+        uploadImage(req, res, err => {
+            const memberObj = {
+                name: req.body.name,
+                designation: req.body.designation,
+                category: req.body.category,
+            };
+            
+            if (req.fileValidationError) {
+                return res.render('admin/addTeamMember', { member: memberObj });
+            } else if (req.file == null) {
+                return res.render('admin/addTeamMember', { member: memberObj });
+            } else if (err instanceof multer.MulterError) {
+                return res.render('admin/addTeamMember', { member: memberObj });
+            }
+            
+            next();
+        });
+    },
+    body('name').trim().isLength({ min: 1 }).escape().withMessage("No name provided"),
+    body('designation').trim().isLength({ min: 1 }).escape().withMessage("No designation provided"),
+    body('category').trim().isLength({ min: 1 }).escape().withMessage("No category provided"),
+    async (req, res, err) => {
+        console.log(req.file);
+        console.log(req.body);
+        const memberObj = {
+            name: req.body.name,
+            designation: req.body.designation,
+            category: req.body.category
+        };
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            fs.unlink(req.file.path, (err) => {
+                if (err) {
+                    console.log(err);
+                }
+                console.log("Image deleted");
+            });
+            console.log(errors);
+            return res.render("admin/addTeamMember", { member: memberObj });
+        } else {
+            const path = req.file.path.replace('public', '');
+            const member = await db.Team.create({
+                name: memberObj.name,
+                designation: memberObj.designation,
+                category: memberObj.category,
+                image: path
+            });
+            return res.redirect("/admin/team");
+        }
+    }
+);
+
+router.post(
+    '/team/edit/:id',
+    (req, res, next) => {
+        uploadImage(req, res, err => {
+            const memberObj = {
+                id: req.params.id,
+                name: req.body.name,
+                designation: req.body.designation,
+                category: req.body.category
+            };
+            if (req.fileValidationError) {
+                return res.render('admin/updateTeamMember', { member: memberObj });
+            } else if (err instanceof multer.MulterError) {
+                return res.render('admin/updateTeamMember', { member: memberObj });
+            }
+            next();
+        });
+    },
+    body('name').trim().isLength({ min: 1 }).escape().withMessage("No name provided"),
+    body('designation').trim().isLength({ min: 1 }).escape().withMessage("No designation provided"),
+    body('category').trim().isLength({ min: 1 }).escape().withMessage("No category provided"),
+    async (req, res, err) => {
+        console.log(req.file);
+        console.log(req.body);
+        const memberObj = {
+            id: req.params.id,
+            name: req.body.name,
+            designation: req.body.designation,
+            category: req.body.category
+        };
+        const errors = validationResult(req);
+        if (!errors.isEmpty() && req.file != null) {
+            fs.unlink(req.file.path, (err) => {
+                if (err) {
+                    console.log(err);
+                }
+                console.log("Image deleted");
+            });
+            console.log(errors);
+            return res.render('admin/updateTeamMember', { member: memberObj });
+        } else {
+            const member = await db.Team.findByPk(req.params.id);
+            member.name = memberObj.name;
+            member.designation = memberObj.designation;
+            member.category = memberObj.category;
+            if (req.file != null) {
+                const newPath = req.file.path.replace('public', '');
+                if (newPath != member.image) {
+                    fs.unlink('public/' + member.image, (err) => {
+                        if (err) {
+                            console.error(err);
+                            console.log("couldn't delete image");
+                        }
+                        console.log("image deleted");
+                    });
+                    member.image = newPath;
+                }
+            }
+            await member.save();
+            return res.redirect('/admin/team');
+        }
+    }
+);
+
 
 module.exports = router;
