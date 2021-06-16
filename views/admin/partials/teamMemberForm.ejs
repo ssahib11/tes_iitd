@@ -1,0 +1,32 @@
+<!doctype html>
+<form class="row justify-content-md-center row-cols g-3" action="<%=submit%>" enctype="multipart/form-data" method="post">
+    <div class="col-12">
+        <input type="hidden" id="type" name="type" value="team">
+    </div>
+    <div class="col-md-12">
+        <label for="Name" class="form-label">Name</label>
+        <input type="text" class="form-control" name="name" id="name" value="<%=member.name%>">
+    </div>
+    <div class="col-md-12">
+        <label for="Designation" class="form-label">Designation</label>
+        <input type="text" class="form-control" name="designation" id="designation" value="<%=member.designation%>">
+    </div>
+    <div class="col-md-12">
+        <label for="Team Category" class="form-label">Team Category</label>
+        <select class="form-select" name="category">
+            <option selected> Please choose </option>
+            <option value="Supervisor"> Supervisor </option>
+            <option value="Student Head"> Student Head </option>
+            <option value="Coordinator"> Coordinator </option>
+            <option value="Executive"> Executive </option>
+        </select>
+        <!-- <input type="text" class="form-control" name="category" id="category" value="<%=member.category%>"> -->
+    </div>
+    <div class="col-md-12">
+        <label class="form-label" for="image"> Member Image</label>
+        <input type="file" accept="image/*" class="form-control" name="image" onChange="loadImage(event)">
+    </div>
+    <div class="col-md-12">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>

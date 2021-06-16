@@ -5,15 +5,15 @@
     </head>
     <body class="text-center">
         <%- include('./partials/navbar.ejs'); %>
-        <h1> Events </h1>
+        <h1>  Events </h1>
 
-        <h3> <a href="/admin/events/add"> Add new event </a> </h3>
+        <h3 class="p-3"> <a href="/admin/events/add"> Add new event </a> </h3>
 
         <!-- <ul class="list-groups"> -->
         <div class="container">
-            <div class="row row-cols-2 g-4">
+            <div class="row justify-content-md-center row-cols g-4">
                 <% events.forEach((event) => { %>
-                <div class="col-sm-6">
+                <div class="col-md-6">
                     <div class="card">
                         <img src="<%=event.image_path%>" class="card-img-top" alt="Event Image">
                         <div class="card-body">
