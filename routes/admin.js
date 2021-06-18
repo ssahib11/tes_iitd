@@ -83,22 +83,22 @@ router.get('/blog', ensureAuthenticated, (req, res) => {
 router.get('/team', ensureAuthenticated, async (req, res) => {
     const supervisors = await db.Team.findAll({
         where: {
-            category: "Supervisor"
+            designation: "Supervisor"
         }
     });
     const studentHead = await db.Team.findAll({
         where: {
-            category: "Student Head"
+            designation: "Student Head"
         }
     });
     const coordinators = await db.Team.findAll({
         where: {
-            category: "Coordinator"
+            designation: "Coordinator"
         }
     });
     const executives = await db.Team.findAll({
         where: {
-            category: "Executive"
+            designation: "Executive"
         }
     });
 
@@ -135,6 +135,11 @@ router.get('/team/delete/:id', async (req, res) => {
             console.log(err);
         }
         console.log("Profile image deleted");
+    });
+    await db.Team.destroy({
+        where: {
+            id: req.params.id
+        }
     });
     res.redirect('/admin/team');
 });
@@ -359,7 +364,8 @@ router.post(
         });
     },
     body('name').trim().isLength({ min: 1 }).escape().withMessage("No name provided"),
-    body('designation').trim().isLength({ min: 1 }).escape().withMessage("No designation provided"),
+    body('designation').trim().isLength({ min: 1 }).withMessage("No designation provided")
+    .isIn(['Supervisor','Student Head','Coordinator','Executive']).escape().withMessage("No designation provided"),
     body('category').trim().isLength({ min: 1 }).escape().withMessage("No category provided"),
     async (req, res, err) => {
         console.log(req.file);
@@ -411,7 +417,8 @@ router.post(
         });
     },
     body('name').trim().isLength({ min: 1 }).escape().withMessage("No name provided"),
-    body('designation').trim().isLength({ min: 1 }).escape().withMessage("No designation provided"),
+    body('designation').trim().isLength({ min: 1 }).withMessage("No designation provided")
+    .isIn(['Supervisor','Student Head','Coordinator','Executive']).escape().withMessage("No designation provided"),
     body('category').trim().isLength({ min: 1 }).escape().withMessage("No category provided"),
     async (req, res, err) => {
         console.log(req.file);
