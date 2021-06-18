@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<form class="row justify-content-md-center row-cols g-3" action="<%=submit%>" enctype="multipart/form-data" method="post">
+    <div class="col-12">
+        <input type="hidden" id="type" name="type" value="team">
+    </div>
+    <div class="col-md-12">
+        <label for="Name" class="form-label">Name</label>
+        <input type="text" class="form-control" name="name" id="name" value="<%=member.name%>">
+    </div>
+    <div class="col-md-12">
+        <label for="Designation" class="form-label">Designation</label>
+        <select class="form-select" name="designation">
+            <% const designations = ["Supervisor", "Student Head", "Coordinator", "Executive"]; %>
+            <% if (member.designation == '') { %>
+                <option selected>Please Choose</option>
+            <% } %>
+            <% designations.forEach((designation) => { %>
+                <% if (member.designation == designation) { %>
+                    <option selected value="<%=designation%>"><%=designation%></option>
+                <% } else { %>
+                    <option value="<%=designation%>"><%=designation%></option>
+                <% } %>
+            <% }) %>
+        </select>
+        <!-- <input type="text" class="form-control" name="category" id="category" value="<%=member.category%>"> -->
+    </div>
+    <div class="col-md-12">
+        <label for="Team Category" class="form-label">Category</label>
+        <input type="text" class="form-control" name="category" id="category" value="<%=member.category%>">
+    </div>
+    <div class="col-md-12">
+        <label class="form-label" for="image"> Member Image</label>
+        <input type="file" accept="image/*" class="form-control" name="image" onChange="loadImage(event)">
+    </div>
+    <div class="col-md-12">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>

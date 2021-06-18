@@ -1,0 +1,28 @@
+<form class="row g-3" action="<%=submit%>" enctype="multipart/form-data" method="post">
+    <div class="col-12">
+    <input type="hidden" id="type" name="type" value="event">
+    </div>
+    <div class="col-12">
+        <label for="Title" class="form-label">Title</label>
+        <input type="text" class="form-control" name="title" id="title" value="<%=event.title%>">
+    </div>
+    <div class="col-md-4">
+        <label class="form-label" for="image">Event Image</label>
+        <input type="file" accept="image/*" class="form-control" name="image" id="image" onchange="loadImage(event)">
+    </div>
+    <div class="col-md-4">
+        <label class="form-label" for="date">Event Date (Max. 5 MB)</label>
+        <input type="date" class="form-control" name="date" id="date" value="<%=event.date%>">
+    </div>
+    <div class="col-md-4">
+        <label class="form-label" for="time">Event Time (24 Hr Format)</label>
+        <input type="time" class="form-control" name="time" id="time" value="<%=event.time%>">
+    </div>
+    <div class="col-12">
+        <label for="Description" class="form-label">Description</label>
+        <textarea class="form-control" name="description" id="description" rows="5" value="<%=event.description%>"><%= event.description %></textarea>
+    </div>
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>

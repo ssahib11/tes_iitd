@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('./partials/head', { title: "Team Members | TES Admin" }); %>
+    </head>
+    <body class="text-center">
+        <%- include('./partials/navbar'); %>
+        <h1> Team Members </h1>
+        <h3 class="p-3"> <a href="/admin/team/add"> Add new member </a> </h3>
+
+        <div class="container">
+            <h2 class="p-3"> 
+                <strong> SUPERVISORS </strong>
+            </h2>
+            <div class="row justify-content-md-center row-cols g-4">
+                <% supervisors.forEach((member) => { %>
+                <div class="col-md-5 p-3">
+                <%- include('./partials/teamMemberCard', { member: member }); %>
+                </div>
+                <% }); %>
+            </div>
+
+            <h2 class="p-3"> 
+                <strong> STUDENT HEAD </strong>
+            </h2>
+            <div class="row justify-content-md-center row-cols g-4">
+                <% studentHead.forEach((member) => { %>
+                <div class="col-md-5 p-3">
+                <%- include('./partials/teamMemberCard', { member: member }); %>
+                </div>
+                <% }); %>
+            </div>
+
+            <h3 class="p-3"> 
+                <strong> COORDINATORS </strong> 
+            </h3>
+            <div class="row justify-content-md-center row-cols g-4">
+                <% coordinators.forEach((member) => { %>
+                <div class="col-md-4 p-2">
+                <%- include('./partials/teamMemberCard', { member: member }); %>
+                </div>
+                <% }); %>
+            </div>
+
+            <h3 class="p-3"> 
+                <strong> EXECUTIVES </strong>
+            </h3>
+            <div class="row justify-content-md-center row-cols g-4">
+                <% executives.forEach((member) => { %>
+                <div class="col-md-4 p-2">
+                <%- include('./partials/teamMemberCard', { member: member }); %>
+                </div>
+                <% }); %>
+            </div>
+        </div>
+    </body>
+</html>
