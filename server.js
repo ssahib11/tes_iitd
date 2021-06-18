@@ -1,12 +1,7 @@
 const express = require('express');
 const path = require('path');
 const logger = require('morgan');
-const passport = require('passport');
-const session = require('express-session');
-const multer = require('multer');
 // const routes = require('./routes');
-
-require('./config/passport')(passport);
 
 const indexRouter = require('./routes/index');
 const adminRouter = require('./routes/admin');
@@ -22,19 +17,6 @@ app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-
-app.use(session({
-    secret: 'secret',
-    resave: true,
-    rolling: true,
-    saveUninitialized: false, 
-    cookie: {
-        maxAge: 2 * 3600000
-    }
-}));
-
-app.use(passport.initialize());
-app.use(passport.session());
 
 app.use('/', indexRouter);
 app.use('/admin', adminRouter);
