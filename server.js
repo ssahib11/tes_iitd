@@ -4,6 +4,7 @@ const logger = require('morgan');
 const passport = require('passport');
 const session = require('express-session');
 const multer = require('multer');
+const helmet = require('helmet');
 // const routes = require('./routes');
 
 require('./config/passport')(passport);
@@ -22,6 +23,7 @@ app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(helmet());
 
 app.use(session({
     secret: 'secret',
