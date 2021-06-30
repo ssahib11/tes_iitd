@@ -105,7 +105,7 @@ router.get('/team', ensureAuthenticated, async (req, res) => {
     res.render('admin/team',{ supervisors: supervisors, studentHead: studentHead, coordinators: coordinators, executives: executives });
 });
 
-router.get('/team/add', (req, res) => {
+router.get('/team/add', ensureAuthenticated, (req, res) => {
     const memberObj = {
         id: null,
         name: "",
@@ -116,7 +116,7 @@ router.get('/team/add', (req, res) => {
     return res.render('admin/addTeamMember', { member: memberObj });
 });
 
-router.get('/team/edit/:id', async (req, res) => {
+router.get('/team/edit/:id', ensureAuthenticated, async (req, res) => {
     dbMember = await db.Team.findByPk(req.params.id);
     const memberObj = {
         id: dbMember.id,
@@ -128,7 +128,7 @@ router.get('/team/edit/:id', async (req, res) => {
     res.render('admin/updateTeamMember', { member: memberObj });
 });
 
-router.get('/team/delete/:id', async (req, res) => {
+router.get('/team/delete/:id', ensureAuthenticated, async (req, res) => {
     dbMember = await db.Team.findByPk(req.params.id);
     fs.unlink('public/' + dbMember.image, (err) => {
         if (err) { 
@@ -153,7 +153,7 @@ router.get('/events',ensureAuthenticated, async (req, res) => {
     return res.render('admin/events', { events : events });
 });
 
-router.get('/events/add', async (req, res) => {
+router.get('/events/add', ensureAuthenticated, async (req, res) => {
     const eventObj = {
         id: null,
         title : "",
@@ -165,7 +165,7 @@ router.get('/events/add', async (req, res) => {
     return res.render('admin/addEvent', { event : eventObj });
 });
 
-router.get('/events/delete/:id', async (req, res) => {
+router.get('/events/delete/:id', ensureAuthenticated, async (req, res) => {
     dbEvent = await db.Events.findByPk(req.params.id);
     fs.unlink('public/' + dbEvent.image_path, (err) => {
         if (err) {
@@ -181,7 +181,7 @@ router.get('/events/delete/:id', async (req, res) => {
     res.redirect('/admin/events');
 });
 
-router.get('/events/edit/:id', async (req, res) => {
+router.get('/events/edit/:id', ensureAuthenticated, async (req, res) => {
     dbEvent = await db.Events.findByPk(req.params.id);
     const datetime = new Date(dbEvent.date);
     const date = datetime.toISOString().split('T')[0];
@@ -209,6 +209,7 @@ router.post('/login', (req, res, next) => {
 
 router.post(
     '/events/add', 
+    ensureAuthenticated, 
     (req, res, next) => {
         uploadImage(req, res, err => {
             const eventObj = {
@@ -271,6 +272,7 @@ router.post(
 
 router.post(
     '/events/edit/:id', 
+    ensureAuthenticated, 
     (req, res, next) => {
         uploadImage(req, res, err => {
             const eventObj = {
@@ -344,6 +346,7 @@ router.post(
 
 router.post(
     '/team/add',
+    ensureAuthenticated, 
     (req, res, next) => {
         uploadImage(req, res, err => {
             const memberObj = {
@@ -400,6 +403,7 @@ router.post(
 
 router.post(
     '/team/edit/:id',
+    ensureAuthenticated, 
     (req, res, next) => {
         uploadImage(req, res, err => {
             const memberObj = {
